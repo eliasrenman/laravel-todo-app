@@ -18,13 +18,13 @@ $isDone = $todo->is_completed ?? false;
                 'mr-2',
                 'border-2',
                 'rounded',
-                'text-green-' => $isDone,
-                'hover:text-white' => $isDone,
-                'border-green-400' => $isDone,
-                'hover:bg-green-400' => $isDone,
-                'text-grey-600' => !$isDone,
-                'border-gray-200' => !$isDone,
-                'hover:bg-gray-200' => !$isDone,
+                'text-green-600' => !$isDone,
+                'hover:text-white' => !$isDone,
+                'border-green-400' => !$isDone,
+                'hover:bg-green-400' => !$isDone,
+                'text-grey-600' => $isDone,
+                'border-gray-200' => $isDone,
+                'hover:bg-gray-200' => $isDone,
             ])>{{ $isDone ? 'Not Done' : 'Done' }}</button>
         <button
             class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400"
