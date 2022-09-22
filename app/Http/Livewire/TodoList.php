@@ -6,9 +6,9 @@ use App\Models\Todo as ModelsTodo;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
-class Todo extends Component
+class TodoList extends Component
 {
-  public $todos;
+  public Collection $todos;
 
   public function __construct() {
     $this->todos = new Collection([]);
@@ -17,9 +17,20 @@ class Todo extends Component
   protected $listeners = 
   [
     'changeCompletedStatus' => 'markOrUnmarkAsCompleted',
-    'deleteTodo' => 'deleteTodo'
+    'deleteTodo' => 'deleteTodo',
+    'addedTodo' => 'onAddedTodo',
   ];
  
+  public function onAddedTodo($todoId)
+  {
+    try {
+
+      $todo = ModelsTodo::findOrFail($todoId);
+      $this->todos->add($todo);
+      // Empty error body.
+    } catch(Exception $e) {}
+  }
+
   public function mount()
   {
     $this->todos = ModelsTodo::all();
