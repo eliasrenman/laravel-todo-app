@@ -32,10 +32,13 @@ class Todo extends Component
     ModelsTodo::destroy($todoId);
   }
 
-  public function markOrUnmarkAsCompleted(bool $isCompleted)
+  public function markOrUnmarkAsCompleted($todoId, bool $isCompleted = false)
   {
-    dd("this happens", $isCompleted);
-    // Simply save the updated value here
+
+    $todo = $this->todos->find($todoId);
+    $todo->is_completed = $isCompleted;
+    $todo->save();
+
   }
 
   public function render()
