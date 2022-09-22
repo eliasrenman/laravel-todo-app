@@ -20,10 +20,10 @@
           'hover:bg-grey' => $isDone,
           
         ])
-        >{{ $isDone ? 'Done' : 'Not Done'}}</button>
+        >{{ $isDone ? 'Not Done' : 'Done'}}</button>
       <button 
         class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
-        wire:click="$emit('deleteTodo', {{ $post }})"
+        wire:click="$emit('deleteTodo', {{ $todo->id }})"
         >Remove
       </button>
   </div>

@@ -8,33 +8,39 @@ use Livewire\Component;
 
 class Todo extends Component
 {
-  public $todos = [];
+  public $todos;
+
+  public function __construct() {
+    $this->todos = new Collection([]);
+  }
 
   protected $listeners = 
   [
     'changeCompletedStatus' => 'markOrUnmarkAsCompleted',
-    'deleteTodo'
+    'deleteTodo' => 'deleteTodo'
   ];
  
-  protected function mount()
+  public function mount()
   {
-    $todos = ModelsTodo::all();
+    $this->todos = ModelsTodo::all();
   } 
 
-  protected function deleteTodo(ModelsTodo $todo)
+  public function deleteTodo($todoId)
   {
-    // Simply remove the post.
+    $this->todos = $this->todos->except($todoId);
+    
+    ModelsTodo::destroy($todoId);
   }
 
-  protected function markOrUnmarkAsCompleted(bool $isCompleted)
+  public function markOrUnmarkAsCompleted(bool $isCompleted)
   {
+    dd("this happens", $isCompleted);
     // Simply save the updated value here
   }
 
   public function render()
   {
-      
-
+    
       return <<<'blade'
       <div>
         @foreach ($todos as $todo)
