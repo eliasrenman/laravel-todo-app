@@ -1,6 +1,13 @@
 # Laravel TODO app
 A simple laravel TODO App since I couldn't come up with anything more interesting :)
 
+## Roadmap
+
+This project is a technical demo and is therefore more or less abondoned but if you want to continue building on this here are some suggestions for additions.
+
+* Add Authentication and save the TODOs to a user so they can access them from multiple devices
+* Add Realtime updates with websockets so multiple clients will be informed if a new todo is added on another client.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
